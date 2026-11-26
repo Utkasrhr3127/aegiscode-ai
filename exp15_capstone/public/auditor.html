@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Auditor — AegisCode AI</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="auditor" data-exp="15">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-dot"></span><span>AegisCode AI</span></a>
+    <div class="nav-links">
+      <span id="badge" class="ai-badge">Checking AI...</span>
+      <a href="/dashboard.html">Dashboard</a>
+      <a href="/auditor.html" class="active">Code Auditor</a>
+      <a href="/admin.html" id="navAdmin" class="hidden">Admin</a>
+      <button id="navLogout" type="button">Log out</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="grid-2">
+      <section class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+          <h2 style="margin:0">Submit Code for AI Audit</h2>
+          <button class="btn sm" id="sampleBtn" type="button">Load Vulnerable Example</button>
+        </div>
+        <div id="auditErr"></div>
+        <form id="auditForm">
+          <label for="auditTitle">Audit Title</label>
+          <input id="auditTitle" type="text" required minlength="3" maxlength="100" placeholder="e.g. Express User Search Endpoint">
+          <div class="grid-2">
+            <div>
+              <label for="auditLang">Language</label>
+              <select id="auditLang">
+                <option value="javascript">JavaScript / Node.js</option>
+                <option value="typescript">TypeScript</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="cpp">C / C++</option>
+                <option value="sql">SQL</option>
+                <option value="go">Go</option>
+              </select>
+            </div>
+            <div>
+              <label for="auditFocus">Audit Focus</label>
+              <select id="auditFocus">
+                <option value="full">Full Security &amp; Architecture</option>
+                <option value="owasp">OWASP Vulnerability Scan</option>
+                <option value="performance">Performance &amp; Big-O</option>
+                <option value="refactor">Clean Refactoring</option>
+              </select>
+            </div>
+          </div>
+          <label for="auditCode">Source Code</label>
+          <textarea id="auditCode" class="code-input" required placeholder="Paste your function, API route, or SQL query here..."></textarea>
+          <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
+            <button class="btn primary" id="runAuditBtn" type="submit">Run Security Audit</button>
+            <span class="muted" id="auditStatusText" style="font-size:13px"></span>
+          </div>
+        </form>
+      </section>
+
+      <section class="card" id="resultCard">
+        <div id="resultEmpty">
+          <h2 style="margin-top:0">Audit Results</h2>
+          <p class="muted">Run an audit or open a saved review from your dashboard to inspect the security score, findings, patched code, and follow-up AI mentor.</p>
+        </div>
+
+        <div id="resultBody" class="hidden">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+            <div>
+              <span class="sev sev-LOW" id="resScoreBadge">Score: 0/100</span>
+              <span class="muted" id="resComplexity" style="margin-left:8px;font-size:12.5px"></span>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn sm" id="togglePublicBtn" type="button">Make Public</button>
+              <a class="btn sm hidden" id="publicLinkBtn" target="_blank">Open Public Report</a>
+            </div>
+          </div>
+
+          <p id="resSummary" style="margin:12px 0"></p>
+          <div class="muted" id="resMeta" style="font-size:12px;margin-bottom:12px"></div>
+
+          <h3>Findings</h3>
+          <div id="resFindings"></div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
+            <h3 style="margin:0">Hardened / Refactored Code</h3>
+            <button class="btn sm" id="copyCodeBtn" type="button">Copy Code</button>
+          </div>
+          <pre class="code-view" id="resCode"></pre>
+
+          <h3 style="margin-top:18px">Follow-Up AI Mentor</h3>
+          <div class="chat-box" id="chatBox"></div>
+          <form id="chatForm" style="display:flex;gap:8px">
+            <input id="chatInput" type="text" placeholder="Ask about a finding or request a rewrite..." required>
+            <button class="btn primary sm" id="chatBtn" type="submit">Ask</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="/base.js"></script>
+  <script src="/ai.js"></script>
+  <script src="/app.js"></script>
+  <script src="/shared/ribbon.js"></script>
+</body>
+</html>

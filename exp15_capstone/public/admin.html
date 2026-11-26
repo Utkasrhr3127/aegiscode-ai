@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Console — AegisCode AI</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="admin" data-exp="15">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-dot"></span><span>AegisCode AI</span></a>
+    <div class="nav-links">
+      <span id="badge" class="ai-badge">Checking AI...</span>
+      <a href="/dashboard.html">Dashboard</a>
+      <a href="/auditor.html">Code Auditor</a>
+      <a href="/admin.html" class="active">Admin</a>
+      <button id="navLogout" type="button">Log out</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div id="adminErr"></div>
+    <div id="adminBody" class="hidden">
+      <section class="grid-3" style="margin-bottom:16px">
+        <div class="card kpi"><div class="lbl">Registered Developers</div><div class="val" id="admUsers">0</div></div>
+        <div class="card kpi"><div class="lbl">Total Platform Audits</div><div class="val" id="admAudits">0</div></div>
+        <div class="card kpi"><div class="lbl">Access Control</div><div class="val" style="font-size:20px;color:#34d399">Admin RBAC Active</div></div>
+      </section>
+
+      <section class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+          <h2 style="margin:0">User &amp; Role Management</h2>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <input id="admSearch" type="text" placeholder="Search name or email..." style="width:220px">
+            <select id="admSort" style="width:150px">
+              <option value="newest">Newest first</option>
+              <option value="name">Name (A-Z)</option>
+              <option value="email">Email (A-Z)</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Name</th><th>Email</th><th>Role</th><th>Audits</th><th>Avg Score</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="admRows"></tbody>
+          </table>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+          <span class="muted" id="admPageInfo" style="font-size:13px"></span>
+          <div style="display:flex;gap:8px">
+            <button class="btn sm" id="admPrev" type="button">Prev</button>
+            <button class="btn sm" id="admNext" type="button">Next</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="/base.js"></script>
+  <script src="/ai.js"></script>
+  <script src="/app.js"></script>
+  <script src="/shared/ribbon.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign In — AegisCode AI</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="auth" data-exp="15">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-dot"></span><span>AegisCode AI</span></a>
+    <div class="nav-links">
+      <span id="badge" class="ai-badge">Checking AI...</span>
+      <a href="/">Home</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="grid-2" style="margin-top:16px">
+      <section class="card">
+        <h2>Log In</h2>
+        <div id="loginMsg"></div>
+        <form id="loginForm">
+          <label for="loginEmail">Email</label>
+          <input id="loginEmail" type="email" required placeholder="dev@aegiscode.local">
+          <label for="loginPass">Password</label>
+          <input id="loginPass" type="password" required placeholder="Your password">
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn primary" type="submit">Sign In</button>
+            <button class="btn sm hidden" id="demoUserBtn" type="button">Demo Developer</button>
+            <button class="btn sm hidden" id="demoAdminBtn" type="button">Demo Admin</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Create Developer Account</h2>
+        <div id="regMsg"></div>
+        <form id="regForm">
+          <label for="regName">Full Name</label>
+          <input id="regName" type="text" required minlength="2" placeholder="Utkarsh Shrivastava">
+          <label for="regEmail">Email</label>
+          <input id="regEmail" type="email" required placeholder="student@university.edu">
+          <label for="regPass">Password (8+ chars, letter + number)</label>
+          <input id="regPass" type="password" required minlength="8" placeholder="SecurePass1">
+          <div style="margin-top:16px">
+            <button class="btn primary" type="submit">Register</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="/base.js"></script>
+  <script src="/ai.js"></script>
+  <script src="/app.js"></script>
+  <script src="/shared/ribbon.js"></script>
+</body>
+</html>

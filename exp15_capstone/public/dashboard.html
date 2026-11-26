@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard — AegisCode AI</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="dashboard" data-exp="15">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-dot"></span><span>AegisCode AI</span></a>
+    <div class="nav-links">
+      <span id="badge" class="ai-badge">Checking AI...</span>
+      <a href="/dashboard.html" class="active">Dashboard</a>
+      <a href="/auditor.html">Code Auditor</a>
+      <a href="/admin.html" id="navAdmin" class="hidden">Admin</a>
+      <button id="navLogout" type="button">Log out</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+      <div>
+        <h1 style="margin:0;font-size:24px" id="dashTitle">Security Dashboard</h1>
+        <p class="muted" style="margin:4px 0 0" id="dashSub">Your saved code audits and vulnerability metrics</p>
+      </div>
+      <a class="btn primary" href="/auditor.html">+ New AI Code Audit</a>
+    </div>
+
+    <section class="grid-4">
+      <div class="card kpi"><div class="lbl">Total Audits</div><div class="val" id="kpiTotal">0</div></div>
+      <div class="card kpi"><div class="lbl">Avg Security Score</div><div class="val" id="kpiScore">0</div></div>
+      <div class="card kpi"><div class="lbl">Critical Findings</div><div class="val" id="kpiCrit" style="color:#f87171">0</div></div>
+      <div class="card kpi"><div class="lbl">High Findings</div><div class="val" id="kpiHigh" style="color:#fb923c">0</div></div>
+    </section>
+
+    <section class="grid-2" style="margin-top:16px">
+      <div class="card">
+        <h3 style="margin-top:0">Severity Breakdown</h3>
+        <div id="sevChart"></div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Filter Saved Audits</h3>
+        <label for="searchReviews">Search by title</label>
+        <input id="searchReviews" type="text" placeholder="Search audits...">
+        <label for="filterLang">Language</label>
+        <select id="filterLang">
+          <option value="">All languages</option>
+          <option value="javascript">JavaScript / Node.js</option>
+          <option value="typescript">TypeScript</option>
+          <option value="python">Python</option>
+          <option value="java">Java</option>
+          <option value="cpp">C / C++</option>
+          <option value="sql">SQL</option>
+          <option value="go">Go</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h3 style="margin-top:0">Audit History</h3>
+      <div id="reviewsList"></div>
+    </section>
+  </main>
+
+  <script src="/base.js"></script>
+  <script src="/ai.js"></script>
+  <script src="/app.js"></script>
+  <script src="/shared/ribbon.js"></script>
+</body>
+</html>

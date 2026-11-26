@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AegisCode AI — Code Security & Architecture Platform</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="home" data-exp="15">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-dot"></span><span>AegisCode AI</span></a>
+    <div class="nav-links">
+      <span id="badge" class="ai-badge">Checking AI...</span>
+      <a href="/auth.html" id="navAuth">Sign In / Register</a>
+      <a href="/dashboard.html" id="navDash" class="hidden">Dashboard</a>
+      <a href="/auditor.html" id="navAudit" class="hidden">Code Auditor</a>
+      <a href="/admin.html" id="navAdmin" class="hidden">Admin</a>
+      <button id="navLogout" class="hidden" type="button">Log out</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section class="card hero">
+      <h1>Ship Hardened Code, Not Vulnerabilities.</h1>
+      <p>AegisCode AI is a full-stack security &amp; architecture auditing platform powered by Groq LLM inference, MongoDB persistence, JWT RBAC, and interactive follow-up AI mentoring.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="btn primary" href="/auditor.html" id="heroCta">Launch AI Code Auditor</a>
+        <a class="btn" href="/auth.html">Create Developer Account</a>
+      </div>
+    </section>
+
+    <section class="grid-3" style="margin-top:20px">
+      <div class="card">
+        <h3>Structured OWASP Audits</h3>
+        <p class="muted">Scores your code (0–100), detects SQLi, XSS, race conditions, and Big-O bottlenecks, and outputs exact patched code.</p>
+      </div>
+      <div class="card">
+        <h3>Persistent AI Mentor</h3>
+        <p class="muted">Every saved audit includes a multi-turn Groq AI mentor thread stored in MongoDB so you can ask follow-up questions.</p>
+      </div>
+      <div class="card">
+        <h3>Shareable Reports &amp; RBAC</h3>
+        <p class="muted">Toggle any audit to a public report link, track severity analytics on your dashboard, and manage users via Admin RBAC.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/base.js"></script>
+  <script src="/ai.js"></script>
+  <script src="/app.js"></script>
+  <script src="/shared/ribbon.js"></script>
+</body>
+</html>
