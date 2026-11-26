@@ -14,3 +14,6 @@ npm install
 npm start
 ```
 Open `http://localhost:3015` (or double-click `run.bat` on Windows).
+
+
+Deployed on Render + MongoDB Atlas with Groq AI.
