@@ -1,0 +1,20 @@
+{
+  "title": "Security review (OWASP-style) of the lab apps",
+  "rows": [
+    { "id": "A01", "area": "Broken access control", "finding": "Admin route is guarded by requireAuth + requireRole('admin'); a normal user gets 403, a forged token gets 401.", "severity": "Low", "status": "OK", "evidence": "test/auth.test.js" },
+    { "id": "A02", "area": "Cryptographic failures", "finding": "JWT_SECRET fell back to a fixed lab secret if the variable was missing. Anyone who reads the code could forge tokens on a deployed copy.", "severity": "High", "status": "FIXED", "evidence": "exp6_auth/server.js now stops in production when JWT_SECRET is missing" },
+    { "id": "A02", "area": "Cryptographic failures", "finding": "Passwords are stored with bcrypt (cost 10), never in plain text, and the hash is never sent to the browser.", "severity": "Low", "status": "OK", "evidence": "test/auth.test.js" },
+    { "id": "A03", "area": "Injection (NoSQL)", "finding": "Login accepted any JSON type for email and password, so {\"$ne\":null} objects could reach the query and bcrypt (an object password can also make bcrypt throw, which is a server error).", "severity": "Medium", "status": "FIXED", "evidence": "login now accepts strings only; 2 tests" },
+    { "id": "A03", "area": "Injection (regex)", "finding": "Search text is escaped before it becomes a regular expression, and sort fields come from a whitelist.", "severity": "Low", "status": "OK", "evidence": "test/students.test.js" },
+    { "id": "A03", "area": "Cross-site scripting", "finding": "No front-end file uses innerHTML; text is inserted as text nodes only.", "severity": "Low", "status": "OK", "evidence": "test/security_static.test.js" },
+    { "id": "A04", "area": "Insecure design", "finding": "Login had no limit on attempts, so passwords could be guessed at full speed.", "severity": "Medium", "status": "FIXED", "evidence": "20 attempts a minute, then 429; 1 test" },
+    { "id": "A04", "area": "Insecure design", "finding": "Request bodies are limited to 100 kb and page size to 50, so one request cannot flood memory.", "severity": "Low", "status": "OK", "evidence": "test/students.test.js" },
+    { "id": "A05", "area": "Security misconfiguration", "finding": "Server sent 'X-Powered-By: Express' and no nosniff header.", "severity": "Low", "status": "FIXED", "evidence": "lib/common.js; 1 test" },
+    { "id": "A05", "area": "Security misconfiguration", "finding": "The project had no .gitignore, so 'git add .' would have put the .env file (Gemini key) into GitHub.", "severity": "High", "status": "FIXED", "evidence": ".gitignore added; 1 test" },
+    { "id": "A05", "area": "Security misconfiguration", "finding": "Experiment 8 has no login on its student API. Acceptable for a lab demo, not for production. The capstone (Exp 15) puts the same data behind admin-only login.", "severity": "Medium", "status": "ACCEPTED", "evidence": "see Exp 15" },
+    { "id": "A07", "area": "Authentication failures", "finding": "Same message for unknown email and wrong password, tokens expire after 1 hour, expired tokens are rejected.", "severity": "Low", "status": "OK", "evidence": "test/auth.test.js" },
+    { "id": "A09", "area": "Logging", "finding": "Unexpected errors are logged on the server and the browser only sees a generic message (no stack trace).", "severity": "Low", "status": "OK", "evidence": "lib/common.js errorHandler" },
+    { "id": "AI", "area": "AI key exposure", "finding": "The Gemini key lives only in .env on the server. No browser file contains it or its variable name.", "severity": "Low", "status": "OK", "evidence": "test/security_static.test.js" },
+    { "id": "A06", "area": "Vulnerable components", "finding": "Dependencies are checked with npm audit (see the audit screenshot for the real result on the day).", "severity": "see audit", "status": "CHECKED", "evidence": "exp14_02" }
+  ]
+}
