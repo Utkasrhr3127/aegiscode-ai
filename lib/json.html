@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>API response viewer</title><link rel="stylesheet" href="/base.css">
+<style>pre{background:#0f172a;color:#e2e8f0;padding:18px 20px;border-radius:12px;overflow:auto;font:13.5px/1.55 Consolas,monospace;max-height:70vh}
+.meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.meta code{background:#e2e8f0;padding:4px 9px;border-radius:6px}</style></head>
+<body data-exp="">
+<main class="wrap"><h1>API response viewer</h1>
+<p class="muted">This page calls the API of this experiment and prints the raw JSON it sends back. Written by <b data-student="name"></b>.</p>
+<div class="meta"><span class="badge" id="st">...</span><code id="url"></code></div>
+<pre id="out">Loading...</pre></main>
+<script>
+const path=new URLSearchParams(location.search).get('path')||'/health';
+document.body.dataset.exp=new URLSearchParams(location.search).get('exp')||String(Number(location.port)-3000);
+document.getElementById('url').textContent='GET '+path;
+fetch(path).then(async r=>{const t=await r.text();const s=document.getElementById('st');s.textContent=r.status+' '+r.statusText;s.className='badge '+(r.ok?'ok':'bad');
+let o=t;try{o=JSON.stringify(JSON.parse(t),null,2)}catch{}document.getElementById('out').textContent=o}).catch(e=>{document.getElementById('out').textContent='Request failed: '+e.message});
+</script><script src="/shared/ribbon.js"></script></body></html>

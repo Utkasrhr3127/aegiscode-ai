@@ -1,0 +1,30 @@
+/* Small pieces shared by Experiments 9 to 12. Each experiment sets its own colours in style.css. */
+.ai-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:99px;font-size:12.5px;font-weight:700;background:#e5e7eb;color:#374151;white-space:nowrap}
+.ai-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.8}
+.ai-badge.live{background:#dcfce7;color:#14532d}
+.ai-badge.demo{background:#fef3c7;color:#78350f}
+.ai-badge.bad{background:#fee2e2;color:#7f1d1d}
+
+.md{line-height:1.65}
+.md p{margin:0 0 .85em}
+.md h3,.md h4,.md h5{margin:1.1em 0 .4em;line-height:1.25}
+.md ul,.md ol{margin:0 0 .9em;padding-left:1.35em}.md li{margin:.25em 0}
+.md code{background:rgba(0,0,0,.07);padding:1px 6px;border-radius:5px;font:.92em Consolas,monospace}
+.md hr{border:0;border-top:1px solid var(--line);margin:1.2em 0}
+.md>:last-child{margin-bottom:0}
+
+.skeleton{display:grid;gap:10px;padding:4px 0}
+.skeleton i{display:block;height:13px;border-radius:7px;background:linear-gradient(90deg,#e6e8ee 25%,#f3f4f8 50%,#e6e8ee 75%);background-size:300% 100%;animation:shimmer 1.3s linear infinite}
+.skeleton i:nth-child(3n){width:70%}.skeleton i:nth-child(4n){width:88%}
+@keyframes shimmer{to{background-position:-300% 0}}
+.spinner{width:18px;height:18px;border-radius:50%;border:3px solid rgba(0,0,0,.15);border-top-color:var(--accent);animation:spin .8s linear infinite;display:inline-block;vertical-align:-3px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.err-box{border:1px solid #fecaca;background:#fef2f2;color:#7f1d1d;border-radius:12px;padding:14px 16px}
+.err-box b{display:block;margin-bottom:3px}
+.meta-line{font-size:12.5px;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap;margin-top:12px}
+.counter{font-size:12.5px;color:var(--muted)}.counter.over{color:var(--bad);font-weight:700}
+button:disabled{opacity:.55;cursor:not-allowed}
+@media (prefers-reduced-motion:reduce){.skeleton i,.spinner{animation:none}}
+.md li>.li-sub{margin-top:.2em;color:var(--muted)}
+.md li>.li-sub em{color:inherit}

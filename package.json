@@ -1,0 +1,24 @@
+{
+  "name": "aegiscode-ai",
+  "version": "1.0.0",
+  "description": "AegisCode AI - Full-Stack AI Code Security Auditor & Architecture Intelligence Platform (Experiments 13-15)",
+  "scripts": {
+    "start": "node exp15_capstone/server.js",
+    "test": "node --test --test-reporter=spec --test-concurrency=1 \"test/*.test.js\"",
+    "test:capstone": "node --test --test-reporter=spec --test-concurrency=1 \"test_capstone/*.test.js\"",
+    "perf": "node scripts/perf14.js",
+    "exp14": "node scripts/shots14.js",
+    "exp15": "node scripts/shots15.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb-memory-server": "^11.4.0",
+    "mongoose": "^9.13.1",
+    "playwright-core": "^1.49.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

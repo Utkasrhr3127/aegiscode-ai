@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.*
+screenshots_demo/
+exp14_results/
+*.log
+.DS_Store
+screenshots/
+
+!.env.example
+HANDOFF_*.md
